@@ -2,7 +2,7 @@ from ultralytics import YOLO
 from pathlib import Path
 from Utils.sideScripts import convert_tif_to_jpg
 
-# Define directories and file paths
+# Define directories and file path
 sample_dir = "SampleData"
 in_dir = f"{sample_dir}/Input"
 out_dir = f"{sample_dir}/Output"
