@@ -6,7 +6,7 @@ from Utils.sideScripts import convert_tif_to_jpg
 sample_dir = "SampleData"
 in_dir = f"{sample_dir}/Input"
 out_dir = f"{sample_dir}/Output"
-int_dir = "Intermediate/Images/"
+int_dir = "Intermediate/"
 
 # Input file path
 input_file = f"{in_dir}/tm583bc2ak1w1akq71.tif"
