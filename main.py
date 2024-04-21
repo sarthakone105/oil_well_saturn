@@ -1,23 +1,24 @@
 from ultralytics import YOLO
 from pathlib import Path
-from Utils.sideScripts import convert_tif_to_jpg
+from Utils.sideScripts import convert_tif_to_jpg, convert_jpg_to_tif
 
-# Define directories and file path
-sample_dir = "SampleData"
-in_dir = f"{sample_dir}/Input"
-out_dir = f"{sample_dir}/Output"
-int_dir = "Intermediate/"
+# Define directories and file paths
+sample_dir = "SampleData"  # Main directory
+in_dir = f"{sample_dir}/Input"  # Input images directory
+out_dir = f"{sample_dir}/Output"  # Output images directory
+int_dir = "Intermediate/"  # Intermediate images directory
 
 # Input file path
 input_file = f"{in_dir}/tm583bc2ak1w1akq71.tif"
-name_jpg = Path(input_file).stem
-converted_jpg_file_path = f"{int_dir}/{name_jpg}.jpg"
+name_tif = Path(input_file).stem  # Extract filename without extension
 
-#  Convert tif into jpg and save it in intermediate folder using the same name as input tif file
+# Paths for converted JPG, predicted JPG, and final predicted TIF files
+converted_jpg_file_path = f"{int_dir}/{name_tif}.jpg"
+predicted_jpg_file_path = f"{int_dir}/{name_tif}_pred.jpg"
+final_pred_out_path = f"{out_dir}/{name_tif}_pred.tif"
+
+# Convert TIF to JPG and save it in the intermediate folder using the same name as the input TIF file
 convert_tif_to_jpg(input_file, converted_jpg_file_path)
-
-# Output file path
-output_file = f'{out_dir}/{name_jpg}_pred.jpg'
 
 # Load the YOLO model
 model = YOLO('Models/best.onnx')
@@ -33,7 +34,10 @@ for result in results:
     probs = result.probs
 
     # Save the result image
-    result.save(filename=output_file)
+    result.save(filename=predicted_jpg_file_path)
+
+# Convert predicted JPG to TIF format
+convert_jpg_to_tif(predicted_jpg_file_path, final_pred_out_path)
 
 # Display the result image
 result.show()
