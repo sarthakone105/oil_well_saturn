@@ -14,7 +14,7 @@ name = Path(input_file).stem
 output_file = f'{out_dir}/{name}_pred.jpg'
 
 # Load the YOLO model
-model = YOLO('/home/satyukt/Sarthak/oil_well_saturn/Models/best.onnx')
+model = YOLO('Models/best.onnx')
 
 # Run inference on the input file
 results = model(input_file)
