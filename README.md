@@ -1,7 +1,7 @@
 # Oil Well Detection using YOLOv8
 
 ## Overview
-This project focuses on detecting oil wells in images using the YOLOv8 object detection model. The input images can be in TIFF or image format, and the output will also be in TIFF format.
+This project focuses on detecting oil wells in images using the YOLOv8 object detection model. The input images can be in TIFF or image format, and the output will also be in jpg format.
 
 ## Requirements
 - Python 3
