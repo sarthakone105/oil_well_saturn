@@ -13,7 +13,7 @@ input_file = f"{in_dir}/tm583bc2ak1w1akq71.tif"
 name_jpg = Path(input_file).stem
 converted_jpg_file_path = f"{int_dir}/{name_jpg}.jpg"
 
-#  Convert tif into jpg and save it in input folder using the same name as input tif file
+#  Convert tif into jpg and save it in intermediate folder using the same name as input tif file
 convert_tif_to_jpg(input_file, converted_jpg_file_path)
 
 # Output file path
